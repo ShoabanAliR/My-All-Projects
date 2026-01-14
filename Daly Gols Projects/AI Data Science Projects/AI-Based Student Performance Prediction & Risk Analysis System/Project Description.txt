@@ -1,0 +1,92 @@
+🎓 Project Title
+AI-Based Student Performance Prediction & Risk Analysis System
+
+(Advanced | Python | Machine Learning + Data Science)
+
+🎯 Project Objective
+
+Is project ka goal:
+
+Students ke academic performance predict karna
+
+At-risk students identify karna (fail/dropout risk)
+
+University ko data-driven decisions lene mein madad dena
+
+🧠 Technologies Used
+
+Python
+
+Pandas, NumPy
+
+Matplotlib, Seaborn
+
+Scikit-learn
+
+XGBoost
+
+SHAP (Explainable AI – Advanced)
+
+📊 Dataset
+
+Features include:
+
+Attendance %
+
+Quiz scores
+
+Assignment marks
+
+Midterm marks
+
+Study hours
+
+Previous GPA
+
+Final Grade (Target)
+
+👉 Dataset:
+
+Kaggle: Student Performance Dataset
+
+
+
+🔍 Machine Learning Models
+
+Linear Regression (baseline)
+
+Random Forest Regressor
+
+XGBoost Regressor (Main Model)
+
+Model comparison using:
+
+RMSE
+
+R² Score
+
+📈 Advanced Features
+
+✔ Data Cleaning & Feature Engineering
+✔ Outlier Detection
+✔ Hyperparameter Tuning
+✔ Explainable AI (SHAP values)
+✔ Risk Classification (High / Medium / Low)
+
+🧪 Project Workflow
+
+Data Loading
+
+Data Preprocessing
+
+Exploratory Data Analysis (EDA)
+
+Feature Engineering
+
+Model Training
+
+Model Evaluation
+
+Risk Analysis
+
+Visualization & Insights

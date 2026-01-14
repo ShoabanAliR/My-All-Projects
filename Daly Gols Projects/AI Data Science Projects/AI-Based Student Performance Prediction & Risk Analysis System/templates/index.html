@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Performance AI</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="card animate">
+        <h2><i class="fa-solid fa-brain"></i> Student Performance AI</h2>
+        <p class="subtitle">Predict student results using Artificial Intelligence</p>
+
+        <div class="inputs">
+            <div class="input-box">
+                <i class="fa-solid fa-calendar-check"></i>
+                <input type="number" id="attendance" placeholder="Attendance %" />
+            </div>
+
+            <div class="input-box">
+                <i class="fa-solid fa-pen"></i>
+                <input type="number" id="quiz" placeholder="Quiz Score" />
+            </div>
+
+            <div class="input-box">
+                <i class="fa-solid fa-file-lines"></i>
+                <input type="number" id="assignment" placeholder="Assignment Marks" />
+            </div>
+
+            <div class="input-box">
+                <i class="fa-solid fa-chart-line"></i>
+                <input type="number" id="midterm" placeholder="Midterm Marks" />
+            </div>
+
+            <div class="input-box">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <input type="number" step="0.01" id="gpa" placeholder="Previous GPA" />
+            </div>
+        </div>
+
+        <button onclick="predict()" class="btn">
+            <i class="fa-solid fa-magic"></i> Predict Result
+        </button>
+
+        <div id="result" class="result-box"></div>
+    </div>
+</div>
+
+<script src="/static/script.js"></script>
+</body>
+</html>
