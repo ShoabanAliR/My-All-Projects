@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Churn Predictor - Training</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="app-container">
+
+  <header class="app-header">
+    <h1>Customer Churn Prediction System</h1>
+    <nav>
+      <a href="{{ url_for('index') }}">Train</a>
+      <a href="{{ url_for('dashboard') }}">Dashboard</a>
+      {% if model_trained %}
+        <a href="{{ url_for('predict') }}">Predict</a>
+      {% endif %}
+    </nav>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>1. Train / Retrain Model</h2>
+      <form action="{{ url_for('train') }}" method="POST" enctype="multipart/form-data">
+        <label>Upload CSV Dataset:</label>
+        <input type="file" name="dataset" accept=".csv" required>
+
+        <label>Target Column Name (default: Churn):</label>
+        <input type="text" name="target_col" placeholder="Churn">
+
+        <button type="submit">Train Model</button>
+      </form>
+
+      {% if error %}
+        <p class="error">Error: {{ error }}</p>
+      {% endif %}
+
+      {% if success %}
+        <p class="success">{{ success }}</p>
+        {% if roc_auc %}
+          <p>ROC-AUC: {{ roc_auc }}</p>
+        {% endif %}
+        {% if f1 %}
+          <p>F1-score (churn class): {{ f1 }}</p>
+        {% endif %}
+      {% endif %}
+    </section>
+
+    <section class="card">
+      <h2>2. Model Status</h2>
+      {% if model_trained %}
+        <p>✅ Model is trained.</p>
+        <a class="button-link" href="{{ url_for('dashboard') }}">View Dashboard</a>
+        <a class="button-link secondary" href="{{ url_for('predict') }}">Go to Prediction Form</a>
+      {% else %}
+        <p>❌ Model not trained yet. Please upload dataset and train.</p>
+      {% endif %}
+    </section>
+
+    <section class="card">
+      <h2>3. Quick Visuals (after training)</h2>
+      {% if charts.churn_distribution %}
+        <img src="{{ url_for('static', filename='churn_distribution.png') }}" class="chart-img" alt="Churn Distribution">
+      {% else %}
+        <p>Charts will appear here after training.</p>
+      {% endif %}
+    </section>
+  </main>
+
+</div>
+</body>
+</html>
