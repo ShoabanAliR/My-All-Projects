@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Educational Resources</title>
+  <!-- Linking the favicon -->
+  <link rel="icon" href="favicon.webp" type="image/x-icon">
+  <!-- Linking Google Fonts For Icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link rel="stylesheet" href="chatbord.css">
+  <style>
+    /* Style for the image section */
+    .image-section h2 {
+      text-align: center;
+      margin: 20px 0;
+      color: var(--text-color);
+      font-weight: 500;
+      line-height: 4rem;
+    }
+    .image-section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+    .circle-images {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .circle-images img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 2px solid #ccc;
+      object-fit: cover;
+    }
+    /* Footer styling */
+    footer {
+      text-align: center;
+      background-color: #f4f4f4;
+      padding: 10px 20px;
+      margin-top: 20px;
+    }
+    footer p {
+      font-size: 0.9rem;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <!-- Header Greetings -->
+    <h1 class="title">Welcome To Educational Resources</h1>
+    <p class="subtitle">How can I help you today?</p>
+    <!-- Suggestion list -->
+    <ul class="suggestion-list">
+      <li class="suggestion">
+        <h4 class="text">What are the main differences between machine learning and deep learning?</h4>
+        <span class="icon material-symbols-rounded">draw</span>
+      </li>
+      <li class="suggestion">
+        <h4 class="text">What are the best tips to improve my public speaking skills?</h4>
+        <span class="icon material-symbols-rounded">lightbulb</span>
+      </li>
+      <li class="suggestion">
+        <h4 class="text">How can Pakistan improve its education system to meet global standards?</h4>
+        <span class="icon material-symbols-rounded">explore</span>
+      </li>
+      <li class="suggestion">
+        <h4 class="text">Write JavaScript code to sum all elements in an array.</h4>
+        <span class="icon material-symbols-rounded">code</span>
+      </li>
+    </ul>
+  </header>
+
+  <!-- Image Section -->
+  <section class="image-section">
+    <h2>Educational Resources</h2>
+    <div class="circle-images">
+      <img src="shoaban profil.jpeg" alt="Education Image 1">
+      <!-- <img src="vk vandna.jpeg" alt="Education Image 2">
+      <img src="waseem.jpeg" alt="Education Image 4">
+      <img src="farman profile.jpg" alt="Education Image 3"> -->
+    </div>
+  </section>
+
+  <!-- Chat List / Container -->
+  <div class="chat-list"></div>
+  <!-- Typing Area -->
+  <div class="typing-area">
+    <form action="#" class="typing-form">
+      <div class="input-wrapper">
+        <input type="text" placeholder="Enter a prompt here" class="typing-input" required />
+        <button id="send-message-button" class="icon material-symbols-rounded">send</button>
+      </div>
+      <div class="action-buttons">
+        <span id="theme-toggle-button" class="icon material-symbols-rounded">light_mode</span>
+        <span id="delete-chat-button" class="icon material-symbols-rounded">delete</span>
+      </div>
+    </form>
+    <p class="disclaimer-text">
+      Educational Resources may display inaccurate info, including about people, so double-check its responses.
+    </p>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>Empowering learning and education for everyone. Let's make knowledge accessible!</p>
+  </footer>
+
+  <script src="chatbord.js"></script>
+</body>
+</html>
