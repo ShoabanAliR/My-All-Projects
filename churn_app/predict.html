@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Customer Churn Predictor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="app-container">
+
+  <!-- Header -->
+  <header class="app-header">
+    <h1>Customer Churn Prediction</h1>
+    <nav>
+      <a href="{{ url_for('index') }}">Train</a>
+      <a href="{{ url_for('dashboard') }}">Dashboard</a>
+      <a href="{{ url_for('predict') }}" class="active">Predict</a>
+    </nav>
+  </header>
+
+  <!-- Form Card -->
+  <section class="card">
+    <h2>Enter Customer Details</h2>
+
+    {% if error %}
+      <p class="error">{{ error }}</p>
+    {% endif %}
+
+    <form method="POST" class="form-grid">
+
+      <!-- Hidden fields (model requirement) -->
+      <input type="hidden" name="RowNumber" value="0">
+      <input type="hidden" name="CustomerId" value="0">
+      <input type="hidden" name="Exited" value="0">
+
+      <div class="form-group">
+        <label>Credit Score</label>
+        <input type="number" name="CreditScore" required>
+      </div>
+
+      <div class="form-group">
+        <label>Geography</label>
+        <select name="Geography" required>
+          <option value="France">France</option>
+          <option value="Spain">Spain</option>
+          <option value="Germany">Germany</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Gender</label>
+        <select name="Gender" required>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Age</label>
+        <input type="number" name="Age" required>
+      </div>
+
+      <div class="form-group">
+        <label>Tenure (Years)</label>
+        <input type="number" name="Tenure" required>
+      </div>
+
+      <div class="form-group">
+        <label>Balance</label>
+        <input type="number" step="0.01" name="Balance" required>
+      </div>
+
+      <div class="form-group">
+        <label>Number of Products</label>
+        <input type="number" name="NumOfProducts" required>
+      </div>
+
+      <div class="form-group">
+        <label>Has Credit Card</label>
+        <select name="HasCrCard" required>
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Is Active Member</label>
+        <select name="IsActiveMember" required>
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Estimated Salary</label>
+        <input type="number" step="0.01" name="EstimatedSalary" required>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit">Predict</button>
+      </div>
+
+    </form>
+  </section>
+
+  <!-- Result -->
+  {% if probability_round is not none %}
+  <section class="card result-card">
+    <h2>Prediction Result</h2>
+    <p><strong>Churn Probability:</strong> {{ probability_round }}%</p>
+
+    <p>
+      <strong>Risk Level:</strong>
+      {% if label == 1 %}
+        <span class="badge badge-high">High Risk (Likely to Churn)</span>
+      {% else %}
+        <span class="badge badge-low">Low Risk (Likely to Stay)</span>
+      {% endif %}
+    </p>
+  </section>
+  {% endif %}
+
+</div>
+
+</body>
+</html>

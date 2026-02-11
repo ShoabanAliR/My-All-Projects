@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Churn Predictor - Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="app-container">
+
+  <header class="app-header">
+    <h1>Churn Insights Dashboard</h1>
+    <nav>
+      <a href="{{ url_for('index') }}">Train</a>
+      <a href="{{ url_for('dashboard') }}" class="active">Dashboard</a>
+      {% if model_trained %}
+        <a href="{{ url_for('predict') }}">Predict</a>
+      {% endif %}
+    </nav>
+  </header>
+
+  <main>
+    {% if not model_trained %}
+      <section class="card">
+        <p>Model is not trained yet. Please go to the Train page first.</p>
+      </section>
+    {% else %}
+
+      <section class="grid-2">
+        {% if charts.churn_distribution %}
+        <div class="card">
+          <h2>Churn Distribution</h2>
+          <img src="{{ url_for('static', filename='churn_distribution.png') }}" class="chart-img">
+          <p class="chart-note">Shows how many customers stayed vs churned.</p>
+        </div>
+        {% endif %}
+
+        {% if charts.tenure_churn %}
+        <div class="card">
+          <h2>Tenure vs Churn</h2>
+          <img src="{{ url_for('static', filename='tenure_churn.png') }}" class="chart-img">
+          <p class="chart-note">Lower tenure customers often churn more.</p>
+        </div>
+        {% endif %}
+      </section>
+
+      <section class="grid-2">
+        {% if charts.monthly_charges_churn %}
+        <div class="card">
+          <h2>Monthly Charges vs Churn</h2>
+          <img src="{{ url_for('static', filename='monthly_charges_churn.png') }}" class="chart-img">
+          <p class="chart-note">Check if higher charges lead to more churn.</p>
+        </div>
+        {% endif %}
+
+        {% if shap_available %}
+        <div class="card">
+          <h2>Top Churn Drivers (SHAP)</h2>
+          <img src="{{ url_for('static', filename='shap_summary.png') }}" class="chart-img">
+          <p class="chart-note">Global feature importance explaining model behavior.</p>
+        </div>
+        {% else %}
+        <div class="card">
+          <h2>Top Churn Drivers</h2>
+          <p>SHAP plot will be available after training.</p>
+        </div>
+        {% endif %}
+      </section>
+
+    {% endif %}
+  </main>
+
+</div>
+</body>
+</html>
